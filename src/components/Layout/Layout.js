@@ -1,11 +1,23 @@
 import { NavLink } from "react-router-dom";
 
-export const Layout = () => {
+import styled from "styled-components";
+
+
+const Wrapper = styled.div`
+padding: 40px;`
+
+  const  Layout = () => {
     return (
         <>
+            <Wrapper>
         <NavLink to="/">Home</NavLink>
         
-        <NavLink to="/Movies">Movies</NavLink>
+            <NavLink to="/movies">Movies</NavLink>
+            
+            </Wrapper>
+            
         </>
     );
 } ;
+
+export default Layout;
