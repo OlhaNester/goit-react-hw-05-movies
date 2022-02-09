@@ -7,6 +7,7 @@ import {getTopMovies} from '../../services/moviesApi';
 const useFetchTopMovies = () => {
   const [topMovies, setTopMovies] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
 //   const getTopMovies = async () => {
 //     const response = await Axios.get(`
@@ -21,6 +22,7 @@ const useFetchTopMovies = () => {
         const topMovies = await getTopMovies();
         setTopMovies(topMovies);
       } catch (error) {
+        setError(error);
       } finally {
         setLoading(false);
       }
@@ -29,21 +31,21 @@ const useFetchTopMovies = () => {
     
   }, []);
 
-  return { topMovies, loading };
+  return { topMovies, loading, error };
 };
 
 
 export const HomePage = () => {
   
-  const { topMovies, loading } = useFetchTopMovies(); //вызов кастомного хука, чтобы получить topMovies, loading
+  const { topMovies, loading, error } = useFetchTopMovies(); //вызов кастомного хука, чтобы получить topMovies, loading
   
   return <div><h1>Trending today</h1>
   {loading && <Loader/>}
-  <ul>
+ {!error && <ul>
       {topMovies.map(movie => (
         <li key={movie.id}>
-          <Link to={`/movie/${movie.id}`}>
+          <Link to={`movies/${movie.id}`}>
       {movie.title}</Link> </li>))}
- </ul>
+ </ul>}
 </div>;
 };
