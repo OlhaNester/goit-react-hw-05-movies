@@ -2,6 +2,10 @@ import { NavLink, Outlet } from "react-router-dom";
 
 import styled from "styled-components";
 
+const Link = styled(NavLink)`
+display: flex;
+gap:20px;`;
+
 const Wrapper = styled.div`
   padding: 40px;
 `;
@@ -10,9 +14,9 @@ const Layout = () => {
   return (
     <>
       <Wrapper>
-        <NavLink to="/">Home</NavLink>
+        <Link to="/">Home</Link>
 
-        <NavLink to="/movies">Movies</NavLink>
+        <Link to="/movies">Movies</Link>
       </Wrapper>
       <Outlet />
     </>
