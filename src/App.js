@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import { HomePage } from "./pages/HomePage/HomePage";
 import { MovieDetailsPage } from './pages/MovieDetailsPage/MovieDetailsPage';
-import {MoviesPage} from './pages/MoviePage/MoviePage';
+import {MoviesPage} from './pages/MoviesPage/MoviesPage';
 
 
 function App() {

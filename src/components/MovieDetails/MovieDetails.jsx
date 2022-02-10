@@ -1,7 +1,11 @@
+//import { linkPoster } from "../Poster/Poster";
+
 const MovieDetails = ({ movie }) => {
+  const linkPoster = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
   return (
     <>
       <button type="button"></button>
+     <img src={linkPoster} width= "300" alt=""/>;
       <h2>{movie.title}</h2>
       <div>{movie.release_date.slice(0, 4)}</div>
       <div>User Score: {movie.vote_average} %</div>

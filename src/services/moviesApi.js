@@ -14,3 +14,14 @@ export const getMovieById = async (id) => {
     `);
   return response.data;
 };
+
+export const getPoster = async () => {
+    const response = await Axios.get(`
+    https://api.themoviedb.org/3/configuration?api_key=ee059677e8bdbcfa281a4ce6304abcdd`);
+    return response.data.images;
+};
+
+export const getMovieByTitle = async (value) => {
+  const response = await Axios.get(`https://api.themoviedb.org/3/search/movie?api_key=ee059677e8bdbcfa281a4ce6304abcdd&language=en-US&query=${value}&page=1&include_adult=false`)
+  return response.data;
+}

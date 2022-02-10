@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Loader from '../../components/Loader/Loader';
 import {getTopMovies} from '../../services/moviesApi';
 
-const useFetchTopMovies = () => {
+const useFetchTopMovies = () => {// кастомный юзэффект
   const [topMovies, setTopMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -21,6 +21,7 @@ const useFetchTopMovies = () => {
       try {
         const topMovies = await getTopMovies();
         setTopMovies(topMovies);
+        
       } catch (error) {
         setError(error);
       } finally {

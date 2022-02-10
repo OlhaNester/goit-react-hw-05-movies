@@ -1,25 +1,33 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+import toast, { Toaster } from 'react-hot-toast';
+import { FaArrowLeft } from 'react-icons/fa';
 import { getMovieById } from "../../services/moviesApi";
 import MovieDetails from "../../components/MovieDetails/MovieDetails";
 
+
+
 export const MovieDetailsPage = () => {
   const { movieId } = useParams();
-  const { movie, setMovie } = useState(null);
+  const [ movie, setMovie ] = useState(null);
   useEffect(() => {
     async function fetchMovie() {
       try {
         const movie = await getMovieById(movieId);
-        setMovie(movie);
-        console.log(movie);
-      } catch (error) {}
+        
+                setMovie(movie);
+      } catch (error) {
+        toast.error('Movie is not found')
+                     }
     }
     fetchMovie();
   }, [movieId]);
   return (
     <>
+      <Link to="/"><FaArrowLeft/>To list of movies</Link>
       <h1>Details Movie {movieId}</h1>
       {movie && <MovieDetails movie={movie} />}
+      <Toaster/>
     </>
   );
 };
