@@ -1,16 +1,40 @@
-export const Searchbar = () => {
+import { useState } from 'react';
+import toast from 'react-hot-toast';
+
+export const Searchbar = ({ propSubmit }) => {
+
+    const [value, setValue] = useState("");
+
+    const handleChange = (event) => {
+        const { value } = event.currentTarget;
+        setValue(value.toLowerCase());
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        if (value.trim() === "") {
+            toast.error("Enter query!");
+            return;
+        }
+        propSubmit(value);
+        setValue('');
+    };
+
+
     return (
         <>
-            <h1>Reseaerch mpvie</h1>
-            <form>
-                <button type="submit"></button>
-                <input>
-                    type="text"
-                    autoComplete = "off"
+             <form onSubmit={handleSubmit}>
+             <button type="submit">Search</button>
+                <input
+                    onChange={handleChange}
+                 type="text"
+                 autoComplete = "off"
                     autoFocus
                     placeholder ="Search movie"
+                    value={value}
                     
-                </input>
+                />
             </form>
         </>
     )
