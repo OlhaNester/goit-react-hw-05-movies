@@ -3,8 +3,9 @@ import { NavLink, Outlet } from "react-router-dom";
 import styled from "styled-components";
 
 const Link = styled(NavLink)`
-display: flex;
-gap:20px;`;
+  display: flex;
+  gap: 20px;
+`;
 
 const Wrapper = styled.div`
   padding: 40px;
