@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
 
-import { Link,useLocation } from "react-router-dom";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
 import { Searchbar } from "../../components/Searchbar/Searchbar";
-import { getMovieByTitle } from '../../services/moviesApi';
-
-
+import { getMovieByTitle } from "../../services/moviesApi";
 
 export const MoviesPage = () => {
-  const [query, setQuery] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [query, setQuery] = useState(searchParams.get("query"));
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -20,7 +19,7 @@ export const MoviesPage = () => {
     async function forFetch() {
       try {
         const { results, total_results } = await getMovieByTitle(query, page);
-                setMovies((prevState) => [...prevState, ...results]);
+        setMovies((prevState) => [...prevState, ...results]);
         setPage((prevState) => prevState + 1);
         setTotal(total_results);
         console.log(total_results);
@@ -39,6 +38,7 @@ export const MoviesPage = () => {
   };
 
   useEffect(() => {
+    console.log(location);
     if (!query) {
       return;
     }
@@ -47,8 +47,9 @@ export const MoviesPage = () => {
 
   const handleFormSubmit = (value) => {
     if (value === query) return;
+    setSearchParams({ query: value });
     setQuery(value);
-        setPage(1);
+    setPage(1);
     setMovies([]);
     setLoading(true);
   };
@@ -61,7 +62,9 @@ export const MoviesPage = () => {
           {movies.map((movie) => (
             <li key={movie.id}>
               {" "}
-              <Link to={`${movie.id}`} state={{from: location}}>{movie.title}</Link>{" "}
+              <Link to={`${movie.id}`} state={{ from: location }}>
+                {movie.title}
+              </Link>
             </li>
           ))}
         </ul>
