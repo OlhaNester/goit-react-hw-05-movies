@@ -5,7 +5,8 @@ const MovieDetails = ({ movie }) => {
   return (
     <>
       <button type="button"></button>
-      <img src={linkPoster} width="300" alt="" />;<h2>{movie.title}</h2>
+      <img src={linkPoster} width="300" alt="" />
+      <h2>{movie.title}</h2>
       <div>{movie.release_date.slice(0, 4)}</div>
       <div>User Score: {movie.vote_average} %</div>
       <div>
@@ -20,14 +21,14 @@ const MovieDetails = ({ movie }) => {
       </div>
       <div>
         <h3>Additional infomation</h3>
-        <Link to={`movies/${movie.id}/cast`}>
-          <h1>Это каст</h1>
+        <Link to={`cast`}>
+          Cast
         </Link>
-        <Link to={`movies/${movie.id}/reviews`}>
-          <h1>Это reviews</h1>
+        <br/>
+        <Link to={`reviews`}>
+          Review
         </Link>
-        {/* <Cast movieId={movieId} /> */}
-      </div>
+             </div>
     </>
   );
 };

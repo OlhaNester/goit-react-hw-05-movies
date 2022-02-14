@@ -21,7 +21,22 @@ export const getPoster = async () => {
     return response.data.images;
 };
 
-export const getMovieByTitle = async (value) => {
-  const response = await Axios.get(`https://api.themoviedb.org/3/search/movie?api_key=ee059677e8bdbcfa281a4ce6304abcdd&language=en-US&query=${value}&page=1&include_adult=false`)
-  return response.data;
-}
+export const getMovieByTitle = async (query, page) => {
+  const response = await Axios.get(
+    `https://api.themoviedb.org/3/search/movie?api_key=ee059677e8bdbcfa281a4ce6304abcdd&language=en-US&query=${query}&page=${page}&include_adult=false`
+  );
+    return response.data;
+};
+
+export const getReviews = async (movieId) => {
+  const response = await Axios.get(`https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=ee059677e8bdbcfa281a4ce6304abcdd&language=en-US&page=1`);
+  console.log(response);
+  return response.data.results;
+    
+};
+
+ export const getCast = async (movieId) => {
+     const response =
+         await Axios.get(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=ee059677e8bdbcfa281a4ce6304abcdd&language=en-US`)
+        return response.data.cast;
+};

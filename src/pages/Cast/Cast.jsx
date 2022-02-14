@@ -1,40 +1,37 @@
 import { useState, useEffect } from "react";
-//import { useParams } from "react-router-dom";
-import Axios from 'axios';
+import { useParams } from "react-router-dom";
+import {getCast} from '../../services/moviesApi';
 
 
- const getCast = async (movieId) => {
-    const response = await Axios.get(`https://api.themoviedb.org/3/movie/${movie_id}/credits?api_key=ee059677e8bdbcfa281a4ce6304abcdd>>&language=en-US`)
-     console.log("это лог из фечаCast");
-     console.log(response.data);
-    return response.data;
-};
-
-
-export const Cast = (movieId) => {
-    //const movieId = useParams();
-    //console.log(Number(movieId));
-    const [cast, setCast] = useState(null);
+export const Cast = () => {
+    const {movieId} = useParams();
+        const [cast, setCast] = useState([]);
     const [error, setError] = useState(null);
-
+    
    
     useEffect(() => {
-       async function ForFetch() {
+        
+       async function FetchCast() {
             try {
-                const { cast } = await getCast(movieId);
+                const  cast  = await getCast(movieId);
                 setCast(cast);
             } catch (error) {
                 setError(error);
             }
-        } ForFetch();
+        }
+        FetchCast();
     }, [movieId]);
 
     return (
         <>
-            {!error && <ul>
+            {cast.length > 0 ? (<ul>
                 {cast.map(item =>
                 (<li key={item.id}>
-                    {item.original_name} </li>))}</ul>}
+                    <img src={`https://image.tmdb.org/t/p/w185${item.profile_path}`}
+                  width="150"
+                  alt="" />
+                    <p>{item.original_name}</p>
+                <p>{item.character}</p></li>))}</ul>) :(<p>"We don't have any information"</p>) }
         </>
     )
 
