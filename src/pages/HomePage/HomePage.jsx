@@ -10,13 +10,7 @@ const useFetchTopMovies = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  //   const getTopMovies = async () => {
-  //     const response = await Axios.get(`
-  // https://api.themoviedb.org/3/trending/movie/day?api_key=ee059677e8bdbcfa281a4ce6304abcdd`);
-  //     return response.data.results;
-  //   };
-
-  useEffect(() => {
+   useEffect(() => {
     async function forFetch() {
       setLoading(true);
       try {

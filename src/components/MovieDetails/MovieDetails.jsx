@@ -1,6 +1,10 @@
 //import { linkPoster } from "../Poster/Poster";
-import { Link } from "react-router-dom";
-const MovieDetails = ({ movie }) => {
+import { Link, useLocation } from "react-router-dom";
+const MovieDetails = ({ movie, state }) => {
+  const location = useLocation();
+  console.log("movi detail");
+  console.log(location);
+
   const linkPoster = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
   return (
     <>
@@ -21,11 +25,11 @@ const MovieDetails = ({ movie }) => {
       </div>
       <div>
         <h3>Additional infomation</h3>
-        <Link to={`cast`}>
+        <Link to={`cast`} state={{from: location}}>
           Cast
         </Link>
         <br/>
-        <Link to={`reviews`}>
+        <Link to={`reviews`} state={{from: location}}>
           Review
         </Link>
              </div>

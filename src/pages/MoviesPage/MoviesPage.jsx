@@ -12,7 +12,10 @@ export const MoviesPage = () => {
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
+console.log("moviesP");
   const location = useLocation();
+  console.log(location);
+
 
   const fetchMovie = () => {
     setLoading(true);
@@ -61,8 +64,7 @@ export const MoviesPage = () => {
         <ul>
           {movies.map((movie) => (
             <li key={movie.id}>
-              {" "}
-              <Link to={`${movie.id}`} state={{ from: location }}>
+                <Link to={`${movie.id}`} state={{ from: location }}>
                 {movie.title}
               </Link>
             </li>

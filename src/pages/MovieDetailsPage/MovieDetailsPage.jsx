@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, Link, Outlet } from "react-router-dom";
+import { useParams, Link, Outlet,  } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import Loader from '../../components/Loader/Loader';
 
@@ -13,6 +13,7 @@ export const MovieDetailsPage = () => {
   const { movieId } = useParams();
    const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(false);
+ 
 
 
   useEffect(() => {
@@ -32,10 +33,10 @@ export const MovieDetailsPage = () => {
   return (
     <>
       {loading && <Loader />}
-      {!loading && <BackLink/>}
+      {!loading && <BackLink />}
       
       
-      {movie && <MovieDetails movie={movie} />}
+      {movie && <MovieDetails movie={movie}  />}
       <Toaster />
       <Outlet/>
     </>
