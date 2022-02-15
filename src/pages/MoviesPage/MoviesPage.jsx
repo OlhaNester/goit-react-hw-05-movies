@@ -10,12 +10,10 @@ export const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(Number(searchParams.get("page")));
   const [total, setTotal] = useState(0);
-console.log("moviesP");
-  const location = useLocation();
-  console.log(location);
 
+  const location = useLocation();
 
   const fetchMovie = () => {
     setLoading(true);
@@ -24,8 +22,8 @@ console.log("moviesP");
         const { results, total_results } = await getMovieByTitle(query, page);
         setMovies((prevState) => [...prevState, ...results]);
         setPage((prevState) => prevState + 1);
+        setSearchParams({ query: query, page: page });
         setTotal(total_results);
-        console.log(total_results);
 
         window.scrollTo({
           top: document.documentElement.scrollHeight,
@@ -50,9 +48,12 @@ console.log("moviesP");
 
   const handleFormSubmit = (value) => {
     if (value === query) return;
-    setSearchParams({ query: value });
+
     setQuery(value);
     setPage(1);
+
+    setSearchParams({ query: query, page: page });
+
     setMovies([]);
     setLoading(true);
   };
@@ -64,7 +65,7 @@ console.log("moviesP");
         <ul>
           {movies.map((movie) => (
             <li key={movie.id}>
-                <Link to={`${movie.id}`} state={{ from: location }}>
+              <Link to={`${movie.id}`} state={{ from: location }}>
                 {movie.title}
               </Link>
             </li>
