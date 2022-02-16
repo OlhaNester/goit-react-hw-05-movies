@@ -75,9 +75,9 @@ export const MoviesPage = () => {
           ))}
         </ul>
       )}
-      <button type="button" onClick={() => fetchMovie()}>
+      {/* <button type="button" onClick={() => fetchMovie()}>
         more
-      </button>
+      </button> */}
     </>
   );
 };

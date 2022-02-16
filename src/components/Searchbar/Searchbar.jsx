@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import toast from 'react-hot-toast';
+import { Form } from './Searchbar.styled';
 
 export const Searchbar = ({ propSubmit }) => {
 
@@ -24,7 +25,7 @@ export const Searchbar = ({ propSubmit }) => {
 
     return (
         <>
-             <form onSubmit={handleSubmit}>
+             <Form onSubmit={handleSubmit}>
              <button type="submit">Search</button>
                 <input
                     onChange={handleChange}
@@ -35,7 +36,7 @@ export const Searchbar = ({ propSubmit }) => {
                     value={value}
                     
                 />
-            </form>
+            </Form>
         </>
     )
 };
