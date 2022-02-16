@@ -2,8 +2,7 @@
 import { Link, useLocation } from "react-router-dom";
 const MovieDetails = ({ movie, state }) => {
   const location = useLocation();
-  console.log("movi detail");
-  console.log(location);
+  
 
   const linkPoster = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
   return (
