@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 //import Axios from 'axios';
 import Loader from "../../components/Loader/Loader";
+import MoviesList from '../../components/MoviesList/MoviesList';
 import { getTopMovies } from "../../services/moviesApi";
 
 const useFetchTopMovies = () => {
@@ -36,15 +37,7 @@ export const HomePage = () => {
       <h1>Trending today</h1>
       {loading && <Loader />}
       {!error && (
-        <ul>
-          {topMovies.map((movie) => (
-            <li key={movie.id}>
-              <Link to={`movies/${movie.id}`} state={{ from: location }}>
-                {movie.title}
-              </Link>{" "}
-            </li>
-          ))}
-        </ul>
+        <MoviesList movies={topMovies} location={location }/>
       )}
     </div>
   );

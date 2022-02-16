@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { Link, useLocation, useSearchParams } from "react-router-dom";
 import { Searchbar } from "../../components/Searchbar/Searchbar";
 import { getMovieByTitle } from "../../services/moviesApi";
+import MoviePreview from "../../components/MoviePreview/MoviePreview";
+import Loader from "../../components/Loader/Loader";
 
 export const MoviesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -61,12 +63,13 @@ export const MoviesPage = () => {
   return (
     <>
       <Searchbar propSubmit={handleFormSubmit} />
+      {loading && <Loader />}
       {!error && (
         <ul>
           {movies.map((movie) => (
             <li key={movie.id}>
               <Link to={`${movie.id}`} state={{ from: location }}>
-                {movie.title}
+              <MoviePreview movie={ movie}/>
               </Link>
             </li>
           ))}

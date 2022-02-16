@@ -3,11 +3,12 @@ import { FaArrowLeft } from "react-icons/fa";
 
 export const BackLink = () => {
   const location = useLocation();
-  console.log(location);
   return (
     <Link to={location?.state?.from ?? "/"}>
-      <FaArrowLeft />
+      <button type="button">
+        <FaArrowLeft />
       Go back
+      </button>
     </Link>
   );
 };

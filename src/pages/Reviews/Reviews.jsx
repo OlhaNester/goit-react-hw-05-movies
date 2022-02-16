@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-//import toast, { Toaster } from "react-hot-toast";
 import {getReviews} from '../../services/moviesApi';
 
 

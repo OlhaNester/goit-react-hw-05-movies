@@ -1,4 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
+import { GlobalStyle } from './GlobalStyle';
+import { AppContainer } from './App.styled';
 import Layout from "./components/Layout/Layout";
 import { HomePage } from "./pages/HomePage/HomePage";
 import { MovieDetailsPage } from "./pages/MovieDetailsPage/MovieDetailsPage";
@@ -7,7 +9,9 @@ import { Cast } from "./pages/Cast/Cast";
 import { Reviews } from "./pages/Reviews/Reviews";
 
 function App() {
-  return (
+  <GlobalStyle />
+  return (<AppContainer>
+    
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
@@ -19,6 +23,7 @@ function App() {
         <Route path="*" element={<Navigate to="/" />} />
       </Route>
     </Routes>
+  </AppContainer>
   );
 }
 

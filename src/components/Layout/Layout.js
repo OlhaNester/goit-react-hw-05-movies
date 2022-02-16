@@ -1,15 +1,6 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import { Link, Wrapper } from './Layout.styled';
 
-import styled from "styled-components";
-
-const Link = styled(NavLink)`
-  display: flex;
-  gap: 20px;
-`;
-
-const Wrapper = styled.div`
-  padding: 40px;
-`;
 
 const Layout = () => {
   return (

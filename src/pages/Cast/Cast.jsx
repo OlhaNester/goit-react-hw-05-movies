@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams, useLocation } from "react-router-dom";
-import {getCast} from '../../services/moviesApi';
+import { getCast } from '../../services/moviesApi';
+import { CastList, Thumb } from '../Cast/Cast.styled';
+import  defaultCast  from '../../components/defaultCast.png';
 
 
 export const Cast = () => {
@@ -8,8 +10,7 @@ export const Cast = () => {
         const [cast, setCast] = useState([]);
     const [error, setError] = useState(null);
     const location = useLocation();
-    console.log("cast");
-    console.log(location);
+   
     
    
     useEffect(() => {
@@ -27,14 +28,19 @@ export const Cast = () => {
 
     return (
         <>
-            {cast.length > 0 ? (<ul>
+            {cast.length > 0 ? (
+                <CastList>
                 {cast.map(item =>
                 (<li key={item.id}>
-                    <img src={`https://image.tmdb.org/t/p/w185${item.profile_path}`}
+                    {item.profile_path ? (<img src={`https://image.tmdb.org/t/p/w185${item.profile_path}`}
                   width="150"
-                  alt="" />
+                  alt="" />):(<Thumb ><img
+                  src={defaultCast}
+                  width="150"
+                  alt=""
+                /></Thumb>) }
                     <p>{item.original_name}</p>
-                <p>{item.character}</p></li>))}</ul>) :(<p>"We don't have any information"</p>) }
+                <p>{item.character}</p></li>))}</CastList>) :(<p>"We don't have any information"</p>) }
         </>
     )
 

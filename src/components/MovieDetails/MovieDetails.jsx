@@ -1,16 +1,17 @@
-//import { linkPoster } from "../Poster/Poster";
 import { Link, useLocation } from "react-router-dom";
-const MovieDetails = ({ movie, state }) => {
+import { MovieContainer, InfoContainer } from './MovieDetails.styled';
+
+const MovieDetails = ({ movie }) => {
   const location = useLocation();
   
 
   const linkPoster = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
   return (
-    <>
-      <button type="button"></button>
+    <MovieContainer>
+     
       <img src={linkPoster} width="300" alt="" />
-      <h2>{movie.title}</h2>
-      <div>{movie.release_date.slice(0, 4)}</div>
+      <InfoContainer><h2>{movie.title}</h2>
+      <span>{movie.release_date.slice(0, 4)}</span>
       <div>User Score: {movie.vote_average} %</div>
       <div>
         <h4>Overview</h4>
@@ -22,17 +23,17 @@ const MovieDetails = ({ movie, state }) => {
           ))}
         </ul>
       </div>
-      <div>
+      <div></div>
         <h3>Additional infomation</h3>
         <Link to={`cast`} state={{ from: location.state.from }}>
           Cast
         </Link>
         <br />
-        <Link to={`reviews`} state={{ from: location }}>
+        <Link to={`reviews`} state={{ from: location.state.from }}>
           Review
         </Link>
-      </div>
-    </>
+      </InfoContainer>
+    </MovieContainer>
   );
 };
 export default MovieDetails;
