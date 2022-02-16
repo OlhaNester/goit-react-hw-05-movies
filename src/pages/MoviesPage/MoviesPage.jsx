@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 
-import { Link, useLocation, useSearchParams } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 import { Searchbar } from "../../components/Searchbar/Searchbar";
 import { getMovieByTitle } from "../../services/moviesApi";
-import MoviePreview from "../../components/MoviePreview/MoviePreview";
+//import MoviePreview from "../../components/MoviePreview/MoviePreview";
+import MoviesList from "../../components/MoviesList/MoviesList";
 import Loader from "../../components/Loader/Loader";
 
 export const MoviesPage = () => {
@@ -13,7 +14,7 @@ export const MoviesPage = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(Number(searchParams.get("page")));
-  const [total, setTotal] = useState(0);
+  //const [total, setTotal] = useState(0);
 
   const location = useLocation();
 
@@ -21,11 +22,11 @@ export const MoviesPage = () => {
     setLoading(true);
     async function forFetch() {
       try {
-        const { results, total_results } = await getMovieByTitle(query, page);
+        const { results } = await getMovieByTitle(query, page);
         setMovies((prevState) => [...prevState, ...results]);
         setPage((prevState) => prevState + 1);
         setSearchParams({ query: query, page: page });
-        setTotal(total_results);
+        //setTotal(total_results);
 
         window.scrollTo({
           top: document.documentElement.scrollHeight,
@@ -64,17 +65,7 @@ export const MoviesPage = () => {
     <>
       <Searchbar propSubmit={handleFormSubmit} />
       {loading && <Loader />}
-      {!error && (
-        <ul>
-          {movies.map((movie) => (
-            <li key={movie.id}>
-              <Link to={`${movie.id}`} state={{ from: location }}>
-              <MoviePreview movie={ movie}/>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
+      {!error && <MoviesList movies={movies} location={location} />}
       {/* <button type="button" onClick={() => fetchMovie()}>
         more
       </button> */}
