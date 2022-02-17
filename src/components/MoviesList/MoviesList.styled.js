@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-export const MoviesContainer=styled.ul`
-display: grid;
+export const MoviesContainer = styled.ul`
+  display: grid;
   max-width: calc(100vw - 48px);
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   grid-gap: 16px;
@@ -11,8 +11,8 @@ display: grid;
   list-style: none;
   margin-left: auto;
   margin-right: auto;
-  text-align: center;`
-
-
-export const Link = styled.a`
-  text-decoration: none;`
+  text-align: center;
+  a {
+    text-decoration: none;
+  }
+`;
