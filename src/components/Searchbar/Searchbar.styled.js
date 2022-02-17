@@ -3,12 +3,12 @@ import styled from "styled-components";
 export const SearchbarContainer = styled.div`
   top: 0px;
   left: 0px;
-margin-right: auto;
-    margin-left: auto;
-}
+  margin-right: auto;
+  margin-left: auto;
   align-items: center;
   min-height: 64px;
-`;
+`; 
+
 export const Form = styled.form`
   display: flex;
   align-items: center;
@@ -21,8 +21,8 @@ export const Form = styled.form`
 
 export const SearchButton = styled.button`
   display: inline-block;
-  width: 48px;
-  height: 48px;
+  width: 30px;
+  height: 30px;
   border: 0;
   background-size: 40%;
   background-repeat: no-repeat;

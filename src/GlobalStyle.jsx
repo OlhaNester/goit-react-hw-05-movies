@@ -25,7 +25,14 @@ img {
   max-width: 100%;
   height: auto;
 } 
-li {
+
+ul {
     list-style: none;
-}   
+    padding-left: 0;
+    margin: 0;
+} 
+a {
+    text-decoration: none;
+    color: inherit;
+}  
 `

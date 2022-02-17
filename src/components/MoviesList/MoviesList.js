@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import MoviePreview from "../../components/MoviePreview/MoviePreview";
+import {MoviePreview} from "../MoviePreview";
 import { MoviesContainer } from "./MoviesList.styled";
+import PropTypes from 'prop-types';
 
-const MoviesList = ({ movies, location }) => {
+export const MoviesList = ({ movies, location }) => {
   return (
     <MoviesContainer>
       {movies.map((movie) => (
@@ -16,4 +17,7 @@ const MoviesList = ({ movies, location }) => {
   );
 };
 
-export default MoviesList;
+MoviesList.propTypes = {
+  movies: PropTypes.array,
+  location: PropTypes.object,
+};

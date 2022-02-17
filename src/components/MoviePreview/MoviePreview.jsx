@@ -1,12 +1,13 @@
 import defaultMovie from "../../components/defaultMovie.jpg";
-import {Thumb} from './MoviePreview.styled'
+import { Thumb } from './MoviePreview.styled';
+import PropTypes from 'prop-types';
 
 
-const MoviePreview = ({ movie }) => {
+export const MoviePreview = ({ movie }) => {
     const { poster_path, title, vote_average } = movie;
   return (
     <div>
-      {poster_path !== null ? (
+      {poster_path ? (
         <img
           src={`https://image.tmdb.org/t/p/w185${poster_path}`}
           width="200"
@@ -21,4 +22,10 @@ const MoviePreview = ({ movie }) => {
   );
 };
 
-export default MoviePreview;
+MoviePreview.propTypes = {
+  movie: PropTypes.shape({
+    poster_path: PropTypes.string,
+    title: PropTypes.string,
+    vote_average: PropTypes.number,
+  })
+};

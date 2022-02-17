@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import { Link, Wrapper } from './Layout.styled';
 
 
-const Layout = () => {
+export const Layout = () => {
   return (
     <>
       <Wrapper>
@@ -15,4 +15,4 @@ const Layout = () => {
   );
 };
 
-export default Layout;
+

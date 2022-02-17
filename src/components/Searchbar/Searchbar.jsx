@@ -2,6 +2,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { ReactComponent as SearchIcon } from "../Searchbar/search.svg";
 import { Form, SearchbarContainer, SearchButton } from "./Searchbar.styled";
+import PropTypes from 'prop-types';
 
 export const Searchbar = ({ propSubmit }) => {
   const [value, setValue] = useState("");
@@ -40,4 +41,9 @@ export const Searchbar = ({ propSubmit }) => {
       </Form>
     </SearchbarContainer>
   );
+};
+
+Searchbar.propTypes = {
+  propSubmit: PropTypes.func,
+  
 };

@@ -10,7 +10,9 @@ display: grid;
   padding: 0;
   list-style: none;
   margin-left: auto;
-  margin-right: auto;`
+  margin-right: auto;
+  text-align: center;`
+
 
 export const Link = styled.a`
   text-decoration: none;`

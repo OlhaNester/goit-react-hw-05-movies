@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-//import Axios from 'axios';
 import Loader from "../../components/Loader/Loader";
-import MoviesList from '../../components/MoviesList/MoviesList';
+import {MoviesList} from '../../components/MoviesList';
 import { getTopMovies } from "../../services/moviesApi";
+import { HomePageContainer } from "./HomePage.styled";
 
 const useFetchTopMovies = () => {
   // кастомный юзэффект
@@ -33,12 +33,13 @@ export const HomePage = () => {
   const { topMovies, loading, error } = useFetchTopMovies(); //вызов кастомного хука, чтобы получить topMovies, loading
   const location = useLocation();
   return (
-    <div>
+    <HomePageContainer>
       <h1>Trending today</h1>
       {loading && <Loader />}
       {!error && (
         <MoviesList movies={topMovies} location={location }/>
       )}
-    </div>
+    </HomePageContainer>
   );
 };
+

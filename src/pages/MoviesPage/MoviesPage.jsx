@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-
+import { ToastContainer } from "react-toastify";
 import { useLocation, useSearchParams } from "react-router-dom";
 import { Searchbar } from "../../components/Searchbar/Searchbar";
 import { getMovieByTitle } from "../../services/moviesApi";
-//import MoviePreview from "../../components/MoviePreview/MoviePreview";
-import MoviesList from "../../components/MoviesList/MoviesList";
+import {MoviesList} from "../../components/MoviesList";
 import Loader from "../../components/Loader/Loader";
+import "react-toastify/dist/ReactToastify.css";
 
 export const MoviesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -14,7 +14,7 @@ export const MoviesPage = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(Number(searchParams.get("page")));
-  //const [total, setTotal] = useState(0);
+  const [total, setTotal] = useState(0);
 
   const location = useLocation();
 
@@ -26,7 +26,7 @@ export const MoviesPage = () => {
         setMovies((prevState) => [...prevState, ...results]);
         setPage((prevState) => prevState + 1);
         setSearchParams({ query: query, page: page });
-        //setTotal(total_results);
+        setTotal(total);
 
         window.scrollTo({
           top: document.documentElement.scrollHeight,
@@ -42,8 +42,8 @@ export const MoviesPage = () => {
   };
 
   useEffect(() => {
-    console.log(location);
     if (!query) {
+          
       return;
     }
     fetchMovie();
@@ -63,6 +63,7 @@ export const MoviesPage = () => {
 
   return (
     <>
+      <ToastContainer autoClose={3000} />
       <Searchbar propSubmit={handleFormSubmit} />
       {loading && <Loader />}
       {!error && <MoviesList movies={movies} location={location} />}

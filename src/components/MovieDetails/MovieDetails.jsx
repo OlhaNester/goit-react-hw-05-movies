@@ -1,23 +1,26 @@
 import { Link, useLocation } from "react-router-dom";
 import { MovieContainer, InfoContainer } from "./MovieDetails.styled";
+import defaultMovie from "../../components/defaultMovie.jpg";
+import PropTypes from 'prop-types';
 
 const MovieDetails = ({ movie }) => {
+  const { poster_path, title, release_date, vote_average, overview, genres } = movie;
   const location = useLocation();
 
-  const linkPoster = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
+  const linkPoster = `https://image.tmdb.org/t/p/w500/${poster_path}`;
   return (
     <MovieContainer>
-      <img src={linkPoster} width="300" alt="" />
+      {poster_path ? (<img src={linkPoster} width="300" alt="" />): (<img src={defaultMovie} width="300" alt="" />)}
       <InfoContainer>
-        <h2>{movie.title}</h2>
-        <span>{movie.release_date.slice(0, 4)}</span>
-        <div>User Score: {movie.vote_average} %</div>
+        <h2>{title}</h2>
+        <span>{release_date.slice(0, 4)}</span>
+        <div>User Score: {vote_average} %</div>
         <div>
           <h4>Overview</h4>
-          <p>{movie.overview}</p>
+          <p>{overview}</p>
           <h4>Genres</h4>
           <ul>
-            {movie.genres.map((genre) => (
+            {genres.map((genre) => (
               <li key={genre.id}>{genre.name}</li>
             ))}
           </ul>
@@ -34,5 +37,20 @@ const MovieDetails = ({ movie }) => {
       </InfoContainer>
     </MovieContainer>
   );
+};
+
+MovieDetails.propTypes = {
+  movie: PropTypes.shape({
+    poster_path:  PropTypes.string,
+    title: PropTypes.string,
+    release_date: PropTypes.string,
+    vote_average: PropTypes.number,
+    overview: PropTypes.string,
+genres: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number,
+        name: PropTypes.string,
+      }))
+  }),
 };
 export default MovieDetails;
