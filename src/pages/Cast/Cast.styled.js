@@ -10,7 +10,11 @@ display: grid;
   padding: 0;
   list-style: none;
   margin-left: auto;
-  margin-right: auto;`
+  margin-right: auto;
+  li {
+    text-align: center;
+  }
+  `
 
 export const Thumb = styled.div`
 height: 225px;

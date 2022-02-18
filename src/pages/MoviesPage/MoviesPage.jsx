@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { ToastContainer } from "react-toastify";
+import {  toast } from "react-toastify";
 import { useLocation, useSearchParams } from "react-router-dom";
 import { Searchbar } from "../../components/Searchbar/Searchbar";
 import { getMovieByTitle } from "../../services/moviesApi";
@@ -26,7 +27,7 @@ export const MoviesPage = () => {
         setMovies((prevState) => [...prevState, ...results]);
         setPage((prevState) => prevState + 1);
         setSearchParams({ query: query, page: page });
-        setTotal(total);
+        setTotal(results.total_results);
 
         window.scrollTo({
           top: document.documentElement.scrollHeight,
@@ -50,7 +51,11 @@ export const MoviesPage = () => {
   }, [query]);
 
   const handleFormSubmit = (value) => {
-    if (value === query) return;
+    
+    if (value === query) {
+      
+      return
+    };
 
     setQuery(value);
     setPage(1);
@@ -63,10 +68,11 @@ export const MoviesPage = () => {
 
   return (
     <>
-      <ToastContainer autoClose={3000} />
+      <ToastContainer autoClose={2000} />
       <Searchbar propSubmit={handleFormSubmit} />
       {loading && <Loader />}
       {!error && <MoviesList movies={movies} location={location} />}
+      
       {/* <button type="button" onClick={() => fetchMovie()}>
         more
       </button> */}

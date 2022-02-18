@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getCast } from '../../services/moviesApi';
 import { CastList, Thumb } from '../Cast/Cast.styled';
+import {  toast } from "react-toastify";
 import  defaultCast  from '../../components/defaultCast.png';
 
 
@@ -28,6 +29,8 @@ export const Cast = () => {
 
     return (
         <>
+            
+            {error && toast.error("Something wrong")}
             {cast.length > 0 ? (
                 <CastList>
                 {cast.map(item =>

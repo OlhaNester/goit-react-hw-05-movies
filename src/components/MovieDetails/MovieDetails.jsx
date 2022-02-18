@@ -1,5 +1,5 @@
-import { Link, useLocation } from "react-router-dom";
-import { MovieContainer, InfoContainer } from "./MovieDetails.styled";
+import { useLocation } from "react-router-dom";
+import { NavLink, MovieContainer, InfoContainer } from "./MovieDetails.styled";
 import defaultMovie from "../../components/defaultMovie.jpg";
 import PropTypes from 'prop-types';
 
@@ -27,13 +27,13 @@ const MovieDetails = ({ movie }) => {
         </div>
         <div></div>
         <h3>Additional infomation</h3>
-        <Link to={`cast`} state={{ from: location.state.from }}>
+        <NavLink to={`cast`} state={{ from: location.state.from }}>
           Cast
-        </Link>
-        <br />
-        <Link to={`reviews`} state={{ from: location.state.from }}>
+        </NavLink>
+        
+        <NavLink to={`reviews`} state={{ from: location.state.from }}>
           Review
-        </Link>
+        </NavLink>
       </InfoContainer>
     </MovieContainer>
   );

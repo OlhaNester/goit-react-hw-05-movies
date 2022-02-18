@@ -1,14 +1,15 @@
 import { Outlet } from "react-router-dom";
-import { Link, Wrapper } from './Layout.styled';
+import { NavLink, Wrapper } from './Layout.styled';
+
 
 
 export const Layout = () => {
   return (
     <>
       <Wrapper>
-        <Link to="/">Home</Link>
+        <NavLink to="/">Home</NavLink>
 
-        <Link to="/movies">Movies</Link>
+        <NavLink to="/movies">Movies</NavLink>
       </Wrapper>
       <Outlet />
     </>

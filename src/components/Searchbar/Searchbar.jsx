@@ -1,8 +1,9 @@
 import { useState } from "react";
-import toast from "react-hot-toast";
+import {  toast } from "react-toastify";
 import { ReactComponent as SearchIcon } from "../Searchbar/search.svg";
 import { Form, SearchbarContainer, SearchButton } from "./Searchbar.styled";
 import PropTypes from 'prop-types';
+import "react-toastify/dist/ReactToastify.css";
 
 export const Searchbar = ({ propSubmit }) => {
   const [value, setValue] = useState("");
@@ -16,7 +17,7 @@ export const Searchbar = ({ propSubmit }) => {
     event.preventDefault();
 
     if (value.trim() === "") {
-      toast.error("Enter query!");
+      toast.info("Enter query!");
       return;
     }
     propSubmit(value);
@@ -25,6 +26,7 @@ export const Searchbar = ({ propSubmit }) => {
 
   return (
     <SearchbarContainer>
+      
       <Form onSubmit={handleSubmit}>
         <SearchButton type="submit">
           {" "}

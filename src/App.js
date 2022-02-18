@@ -8,6 +8,7 @@ import { AppContainer } from "./App.styled";
 // import  {MoviesPage} from "./pages/MoviesPage";
 import  {Cast}  from "./pages/Cast";
 import { Reviews } from "./pages/Reviews";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const loader = componentName => {

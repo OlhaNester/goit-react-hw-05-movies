@@ -1,4 +1,16 @@
 import styled from "styled-components";
+import { NavLink as RouterLink } from "react-router-dom";
+
+export const NavLink = styled(RouterLink)`
+  padding: 20px;
+  //display: flex;
+  text-decoration: none;
+
+  &.active
+   {
+    color: red;
+  }
+`;
 
 export const MovieContainer = styled.div`
   display: flex;

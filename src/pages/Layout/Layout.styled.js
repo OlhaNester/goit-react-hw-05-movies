@@ -1,12 +1,13 @@
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import { NavLink as RouterLink } from "react-router-dom";
 
-export const Link = styled(NavLink)`
+export const NavLink = styled(RouterLink)`
   padding: 20px;
   display: flex;
+  text-decoration: none;
 
-  :active,
-  :focus {
+  &.active
+   {
     color: red;
   }
 `;
