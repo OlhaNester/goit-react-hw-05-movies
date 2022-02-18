@@ -6,8 +6,8 @@ import { AppContainer } from "./App.styled";
 // import  {HomePage}  from "./pages/HomePage";
 // import  {MovieDetailsPage}  from "./pages/MovieDetailsPage";
 // import  {MoviesPage} from "./pages/MoviesPage";
-import  {Cast}  from "./pages/Cast";
-import { Reviews } from "./pages/Reviews";
+// import  {Cast}  from "./pages/Cast";
+// import { Reviews } from "./pages/Reviews";
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -21,7 +21,9 @@ const loader = componentName => {
  const Layout = loader("Layout");
  const HomePage = loader("HomePage");
  const MoviesPage = loader("MoviesPage");
- const MovieDetailsPage = loader("MovieDetailsPage");
+const MovieDetailsPage = loader("MovieDetailsPage");
+const Cast = loader("Cast");
+const Reviews = loader("Reviews");
 
 function App() {
   <GlobalStyle />;
