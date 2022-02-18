@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { ToastContainer } from "react-toastify";
-import {  toast } from "react-toastify";
 import { useLocation, useSearchParams } from "react-router-dom";
 import { Searchbar } from "../../components/Searchbar/Searchbar";
 import { getMovieByTitle } from "../../services/moviesApi";
