@@ -27,11 +27,11 @@ const MovieDetails = ({ movie }) => {
         </div>
         <div></div>
         <h3>Additional infomation</h3>
-        <NavLink to={`cast`} state={{ from: location.state.from }}>
+        <NavLink to={`cast`} state={{ from: location?.state?.from }}>
           Cast
         </NavLink>
         
-        <NavLink to={`reviews`} state={{ from: location.state.from }}>
+        <NavLink to={`reviews`} state={{ from: location?.state?.from }}>
           Review
         </NavLink>
       </InfoContainer>
